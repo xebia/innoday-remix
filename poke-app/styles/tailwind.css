@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body,
+  html {
+    @apply h-full;
+  }
+}
+@layer components {
+  .poke-button {
+    @apply bg-purple-500 rounded-lg text-white p-3 mt-10;
+  }
+}
