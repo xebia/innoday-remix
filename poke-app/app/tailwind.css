@@ -482,10 +482,6 @@ body, html {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.m-2 {
-  margin: 0.5rem;
-}
-
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -522,6 +518,10 @@ body, html {
   justify-content: center;
 }
 
+.gap-10 {
+  gap: 2.5rem;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -555,6 +555,11 @@ body, html {
 
 .text-7xl {
   font-size: 4.5rem;
+  line-height: 1;
+}
+
+.text-5xl {
+  font-size: 3rem;
   line-height: 1;
 }
 

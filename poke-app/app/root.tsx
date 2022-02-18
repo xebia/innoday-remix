@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
+import Error from "~/pages/Error";
+
 import styles from "./tailwind.css";
 
 export function links() {
@@ -16,6 +18,10 @@ export function links() {
 export const meta: MetaFunction = () => {
   return { title: "Poke App" };
 };
+
+export function CatchBoundary() {
+  return <Error />;
+}
 
 export default function App() {
   return (

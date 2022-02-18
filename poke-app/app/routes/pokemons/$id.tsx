@@ -1,11 +1,11 @@
-import { useLoaderData } from "remix";
+import { useCatch, useLoaderData } from "remix";
 import { PokemonDetails } from "~/types";
 
 export const loader = async ({ params }: { params: { id: string } }) => {
   const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`);
 
   if (!result.ok) {
-    throw new Response("This Pokémon does not exist", { status: 404 });
+    throw new Response("Not Found", { status: 404 });
   }
 
   return result;

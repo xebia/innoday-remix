@@ -1,4 +1,5 @@
-import { Link, MetaFunction } from "remix";
+import { Link, MetaFunction, useCatch } from "remix";
+import NotFound from "~/pages/404";
 
 export default function Index() {
   return (
