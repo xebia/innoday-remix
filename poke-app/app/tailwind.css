@@ -423,7 +423,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
-body, html {
+body,
+  html {
   height: 100%;
 }
 
@@ -482,8 +483,21 @@ body, html {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.poke-button:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 33 168 / var(--tw-bg-opacity));
+}
+
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .block {
@@ -492,6 +506,10 @@ body, html {
 
 .flex {
   display: flex;
+}
+
+.table {
+  display: table;
 }
 
 .grid {
@@ -506,8 +524,26 @@ body, html {
   width: 100%;
 }
 
+.min-w-min {
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
+}
+
+.min-w-\[200px\] {
+  min-width: 200px;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .items-center {
@@ -524,6 +560,10 @@ body, html {
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 
 .bg-black {
