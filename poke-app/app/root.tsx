@@ -8,7 +8,6 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import Error from "~/pages/Error";
-
 import styles from "./tailwind.css";
 
 export function links() {

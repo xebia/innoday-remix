@@ -13,7 +13,7 @@ export default function Error() {
       <body>
         <div className="w-full h-full bg-black flex justify-center items-center text-white">
           <div className="text-center">
-            <h1 className="mb-4 text-7xl font-bold">
+            <h1 className="mb-4 text-7xl font-bold text-center">
               Something went wrong :( <br />
               {caught.status} {caught.statusText}
             </h1>

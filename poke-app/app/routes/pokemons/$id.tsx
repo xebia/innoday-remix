@@ -1,4 +1,4 @@
-import { useCatch, useLoaderData } from "remix";
+import { useLoaderData } from "remix";
 import { PokemonDetails } from "~/types";
 
 export const loader = async ({ params }: { params: { id: string } }) => {
