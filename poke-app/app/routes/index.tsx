@@ -2,11 +2,13 @@ import { Link, MetaFunction } from "remix";
 
 export default function Index() {
   return (
-    <div className="bg-red-700 w-10 h-9">
-      <h1>Poké App</h1>
-      <Link className="poke-button" to="/game">
-        start
-      </Link>
+    <div className="w-full h-full bg-black flex justify-center items-center text-white">
+      <div className="text-center">
+        <h1 className="mb-4 text-7xl font-bold">Poké App</h1>
+        <Link className="poke-button" to="/pokemons">
+          start
+        </Link>
+      </div>
     </div>
   );
 }
