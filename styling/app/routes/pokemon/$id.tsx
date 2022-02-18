@@ -1,4 +1,3 @@
-import { createPokemon } from '../../../mock';
 import { useLoaderData } from 'remix';
 
 export const loader = async ({ params }: { params: { id: string } }) => {

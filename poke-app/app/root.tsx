@@ -15,7 +15,7 @@ export function links() {
 }
 
 export const meta: MetaFunction = () => {
-  return { title: "Poke App" };
+  return { title: "Poké App" };
 };
 
 export function CatchBoundary() {

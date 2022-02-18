@@ -18,3 +18,13 @@ export const getAllPokemons = async () => {
     throw error;
   }
 };
+
+export const getPokemonById = async (id: string) => {
+  const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+
+  if (!result.ok) {
+    throw new Response("Not Found", { status: 404 });
+  }
+
+  return result;
+};
