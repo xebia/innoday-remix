@@ -1,4 +1,4 @@
-import { useLoaderData } from 'remix';
+import { Link, useLoaderData } from 'remix';
 import { createPokemonOverview } from '../../mock';
 
 export type PokemonIndex = {
@@ -20,7 +20,9 @@ export default function Index() {
       <h1>PokédeXSD</h1>
       <ul>
         {pokemons?.results.map((pokemon) => (
-          <li key={pokemon.name}>{pokemon.name}</li>
+          <li key={pokemon.name}>
+            <Link to={'pokemon/' + pokemon.name}>{pokemon.name}</Link>
+          </li>
         ))}
       </ul>
     </div>
