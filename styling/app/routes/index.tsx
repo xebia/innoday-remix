@@ -1,5 +1,5 @@
 import { useLoaderData } from 'remix';
-import { createPokemon } from '../../mock';
+import { createPokemonOverview } from '../../mock';
 
 export type PokemonIndex = {
   count: number;
@@ -9,7 +9,7 @@ export type PokemonIndex = {
 };
 
 export const loader = async () => {
-  return createPokemon();
+  return createPokemonOverview();
 };
 
 export default function Index() {

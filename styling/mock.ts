@@ -1,6 +1,11 @@
 import { PokemonIndex } from '~/routes';
+import { Pokemon } from '~/routes/pokemon/$id';
 
-export const createPokemon = (): PokemonIndex => ({
+export const createPokemon = (): Pokemon => ({
+  name: 'bulbasaur',
+});
+
+export const createPokemonOverview = (): PokemonIndex => ({
   count: 1126,
   next: 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20',
   previous: null,
