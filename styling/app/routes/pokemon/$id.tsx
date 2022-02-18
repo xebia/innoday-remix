@@ -2,7 +2,7 @@ import { createPokemon } from '../../../mock';
 import { useLoaderData } from 'remix';
 
 export const loader = async ({ params }) => {
-  return { ...createPokemon(), id: params.id };
+  return { ...createPokemon(), name: params.id };
 };
 
 export interface Pokemon {
@@ -14,9 +14,7 @@ export default function Pokemon() {
 
   return (
     <div>
-      <h1>
-        #{pokemon.id} {pokemon.name}
-      </h1>
+      <h1>{pokemon.name}</h1>
     </div>
   );
 }
