@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import styles from "./Pokemon.module.css";
 
 import Link from "next/link";
@@ -22,20 +22,7 @@ const getPokemonId = (url: string): string => {
   return id;
 };
 
-const fetchPokemon = async (limit = 10, offset = 0): Promise<Pokemon> => {
-  try {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
-    );
-
-    return response.json() as Promise<Pokemon>;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-};
-
-export const PokemonList = () => {
+export const PokemonList = ({ data }: { data: Pokemon }) => {
   const router = useRouter();
 
   const limit = router.query.limit
@@ -45,31 +32,6 @@ export const PokemonList = () => {
   const offset = router.query.offset
     ? parseInt(router.query.offset as string)
     : 0;
-
-  const [data, setData] = useState<Pokemon>();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setLoading(true);
-    fetchPokemon(limit, offset)
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        setError(error);
-      });
-  }, [limit, offset]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error</div>;
-  }
 
   return (
     <div className={styles.flex}>
@@ -99,8 +61,6 @@ export const PokemonList = () => {
             },
           }}
           passHref
-          scroll={false}
-          shallow={true}
         >
           <a className={offset === 0 ? styles.disabled : ""}>Previous</a>
         </Link>
@@ -112,8 +72,6 @@ export const PokemonList = () => {
             },
           }}
           passHref
-          scroll={false}
-          shallow={true}
         >
           <a>Next</a>
         </Link>
@@ -124,16 +82,12 @@ export const PokemonList = () => {
               id="limit"
               value={limit}
               onChange={(event) =>
-                router.push(
-                  {
-                    query: {
-                      limit: event.target.value,
-                      offset,
-                    },
+                router.push({
+                  query: {
+                    limit: event.target.value,
+                    offset,
                   },
-                  undefined,
-                  { shallow: true, scroll: false }
-                )
+                })
               }
             >
               <option value="10">10</option>
