@@ -1,14 +1,10 @@
 import { useLoaderData } from "remix";
+import { getPokemonById } from "~/api/pokemons";
 import { PokemonDetails } from "~/types";
 
 export const loader = async ({ params }: { params: { id: string } }) => {
-  const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`);
-
-  if (!result.ok) {
-    throw new Response("Not Found", { status: 404 });
-  }
-
-  return result;
+  const pokemon = await getPokemonById(params.id);
+  return pokemon;
 };
 
 export default function Pokemon() {
