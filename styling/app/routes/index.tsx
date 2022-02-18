@@ -1,5 +1,4 @@
 import { Link, useLoaderData } from 'remix';
-import { createPokemonOverview } from '../../mock';
 
 export type PokemonIndex = {
   count: number;
