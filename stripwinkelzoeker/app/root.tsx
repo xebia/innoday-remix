@@ -4,12 +4,12 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: "Stripwinkelzoeker Remix edition" };
 };
 
 export default function App() {
