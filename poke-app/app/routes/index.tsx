@@ -1,4 +1,9 @@
-import { Link } from "remix";
+import { Link, MetaFunction } from "remix";
+
+export let meta: MetaFunction = () => ({
+  title: "Poke app title",
+  description: "Poke app description!",
+});
 
 export default function Index() {
   return (
