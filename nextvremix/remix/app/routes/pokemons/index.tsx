@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "remix";
 
-import type { PokemonResponse } from "~/pokemon";
+import type { PokemonsResponse } from "~/pokemon";
 import { getPokemons } from "~/pokemon";
 
 export const loader = async () => {
@@ -8,8 +8,7 @@ export const loader = async () => {
 };
 
 export default function Pokemons() {
-  const pokemonResponse = useLoaderData<PokemonResponse>();
-  console.log(pokemonResponse);
+  const pokemonResponse = useLoaderData<PokemonsResponse>();
   return (
     <div>
       <h1>Pokemons</h1>
