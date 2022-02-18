@@ -1,4 +1,5 @@
 import { useLoaderData } from "remix";
+import { PokemonDetails } from "~/types";
 
 export const loader = async ({ params }: { params: { id: string } }) => {
   const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`);
@@ -10,15 +11,8 @@ export const loader = async ({ params }: { params: { id: string } }) => {
   return result;
 };
 
-export interface Pokemon {
-  name: string;
-  sprites: {
-    front_default: string;
-  };
-}
-
 export default function Pokemon() {
-  const pokemon = useLoaderData<Pokemon>();
+  const pokemon = useLoaderData<PokemonDetails>();
 
   return (
     <div>
