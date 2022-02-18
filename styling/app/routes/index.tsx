@@ -9,7 +9,7 @@ export type PokemonIndex = {
 };
 
 export const loader = async () => {
-  return createPokemonOverview();
+  return fetch('https://pokeapi.co/api/v2/pokemon/');
 };
 
 export default function Index() {
