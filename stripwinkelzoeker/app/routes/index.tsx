@@ -34,7 +34,7 @@ interface Data {
 
 export let loader = async () => {
   const contentful = new GraphQLClient(
-    "https://graphql.contentful.com/content/v1/spaces/tat9577n8aak",
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
       headers: {
         authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
