@@ -1,4 +1,7 @@
 import { Link, useLoaderData } from 'remix';
+import { links as ListLinks, List } from '~/components/List/List';
+import { links as ListItemLinks, ListItem } from '~/components/List/ListItem';
+
 
 export type PokemonIndex = {
   count: number;
@@ -6,6 +9,15 @@ export type PokemonIndex = {
   previous: string | null;
   results: { name: string; url: string }[];
 };
+
+// Without this, no styles are loaded, not even from imported components..
+export function links() {
+  return [
+    ...ListLinks(), 
+    ...ListItemLinks()
+  ];
+}
+
 
 export const loader = async () => {
   return fetch('https://pokeapi.co/api/v2/pokemon/');
@@ -17,13 +29,13 @@ export default function Index() {
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
       <h1>PokédeXSD</h1>
-      <ul>
+      <List>
         {pokemons?.results.map((pokemon) => (
-          <li key={pokemon.name}>
+          <ListItem key={pokemon.name}>
             <Link to={'pokemon/' + pokemon.name}>{pokemon.name}</Link>
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </div>
   );
 }
