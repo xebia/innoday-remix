@@ -1,8 +1,14 @@
-import { Link, useLoaderData } from "remix";
-import { getAllPokemons } from "~/api/pokemons";
+import { Form, Link, LoaderFunction, useLoaderData } from "remix";
+import { getAllPokemons, getPokemonById } from "~/api/pokemons";
 import { PokemonDetails } from "~/types";
 
-export const loader = async () => {
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const pokemonSearchId = url.searchParams.get("id");
+  if (pokemonSearchId) {
+    const pokemon: PokemonDetails = await getPokemonById(pokemonSearchId);
+    return [pokemon];
+  }
   const response = await getAllPokemons();
   return response;
 };
@@ -12,6 +18,18 @@ export default function Index() {
 
   return (
     <div className="bg-gray-200 p-10 flex flex-col items-center min-w-min">
+      <Form className="py-5">
+        <input
+          type="text"
+          name="id"
+          placeholder="type an id"
+          className="border-2 rounded py-3 px-4 mr-2"
+        />
+        <button className="poke-button" type="submit">
+          Search
+        </button>
+      </Form>
+
       <div className="grid grid-cols-3 gap-10">
         {pokemons.map((pokemon) => (
           <div

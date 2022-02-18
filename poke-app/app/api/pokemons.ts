@@ -26,5 +26,5 @@ export const getPokemonById = async (id: string) => {
     throw new Response("Not Found", { status: 404 });
   }
 
-  return result;
+  return await result.json();
 };

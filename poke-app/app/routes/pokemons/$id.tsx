@@ -1,9 +1,11 @@
 import { Link, useLoaderData } from "remix";
+import invariant from "tiny-invariant";
 import { getPokemonById } from "~/api/pokemons";
 import { PokemonDetails } from "~/types";
 
 export const loader = async ({ params }: { params: { id: string } }) => {
-  const pokemon = await getPokemonById(params.id);
+  invariant(params.id, "Expected params.id");
+  const pokemon: PokemonDetails = await getPokemonById(params.id);
   return pokemon;
 };
 
