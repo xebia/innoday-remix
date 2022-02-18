@@ -11,3 +11,4 @@ npm run dev
 - replace scripts and create tailwind.config and add at root.tsx the import
 - It has functions to help import items inside head html tag such as link function
 - Outlet controls the routes
+- I had a problem using custom apply css with tailwind

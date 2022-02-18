@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .custom-class {
-    @apply ...;
+  .poke-button {
+    @apply bg-purple-500 border-r-2 text-white p-2;
   }
 }
