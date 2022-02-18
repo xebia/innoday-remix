@@ -1,32 +1,56 @@
+import { useLoaderData, json, Link } from "remix";
+import { GraphQLClient, gql } from "graphql-request";
+
+const GetStoresQuery = gql`
+  query {
+    storeCollection {
+      items {
+        slug
+        name
+        city
+      }
+    }
+  }
+`;
+
+interface Data {
+  storeCollection: {
+    items: {
+      slug: string;
+      name: string;
+      description: string;
+    }[];
+  };
+}
+
+export let loader = async () => {
+  const contentful = new GraphQLClient(
+    "https://graphql.contentful.com/content/v1/spaces/tat9577n8aak",
+    {
+      headers: {
+        authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+      },
+    }
+  );
+
+  const { storeCollection } = await contentful.request<Data>(GetStoresQuery);
+
+  return json({ storeCollection });
+};
+
 export default function Index() {
+  let data: Data = useLoaderData();
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
+      <h1>Stripwinkelzoeker</h1>
+      {data.storeCollection.items.map(({ slug, name }) => (
+        <li key={slug}>
+          <Link to={`/products/${slug}`} prefetch="intent">
+            <a>{name}</a>
+          </Link>
         </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+      ))}
     </div>
   );
 }
