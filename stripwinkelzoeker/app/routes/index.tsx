@@ -1,5 +1,6 @@
-import { useLoaderData, json, Link } from "remix";
+import { useLoaderData, json } from "remix";
 import { GraphQLClient, gql } from "graphql-request";
+import { StoreBlock, StoreBlockGrid } from "../components";
 
 const GetStoresQuery = gql`
   query {
@@ -8,6 +9,10 @@ const GetStoresQuery = gql`
         slug
         name
         city
+        image {
+          url
+          title
+        }
       }
     }
   }
@@ -18,7 +23,11 @@ interface Data {
     items: {
       slug: string;
       name: string;
-      description: string;
+      city: string;
+      image: {
+        url: string;
+        title: string;
+      };
     }[];
   };
 }
@@ -42,15 +51,10 @@ export default function Index() {
   let data: Data = useLoaderData();
 
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Stripwinkelzoeker</h1>
-      {data.storeCollection.items.map(({ slug, name }) => (
-        <li key={slug}>
-          <Link to={`/products/${slug}`} prefetch="intent">
-            <a>{name}</a>
-          </Link>
-        </li>
+    <StoreBlockGrid>
+      {data.storeCollection.items.map((store) => (
+        <StoreBlock store={store} key={store.slug} />
       ))}
-    </div>
+    </StoreBlockGrid>
   );
 }
