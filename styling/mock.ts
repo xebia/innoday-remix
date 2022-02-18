@@ -3,6 +3,9 @@ import { Pokemon } from '~/routes/pokemon/$id';
 
 export const createPokemon = (): Pokemon => ({
   name: 'bulbasaur',
+  sprites: {
+    front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+  },
 });
 
 export const createPokemonOverview = (): PokemonIndex => ({
