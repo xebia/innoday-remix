@@ -12,3 +12,4 @@ npm run dev
 - It has functions to help import items inside head html tag such as link function
 - Outlet controls the routes
 - I had a problem using custom apply css with tailwind
+- add magical meta tag O_O
