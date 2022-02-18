@@ -12,7 +12,6 @@ export default function Index() {
 
   return (
     <div className="bg-gray-200 p-10 flex flex-col items-center min-w-min">
-      <h1 className="text-5xl font-bold text-center mb-10">Pokémons</h1>
       <div className="grid grid-cols-3 gap-10">
         {pokemons.map((pokemon) => (
           <div

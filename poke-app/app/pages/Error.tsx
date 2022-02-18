@@ -22,7 +22,6 @@ export default function Error() {
             </Link>
           </div>
         </div>
-
         <Scripts />
       </body>
     </html>

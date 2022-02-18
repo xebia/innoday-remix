@@ -7,7 +7,7 @@ export const loader = async ({ params }: { params: { id: string } }) => {
   return pokemon;
 };
 
-export default function Pokemon() {
+export default function Search() {
   const pokemon = useLoaderData<PokemonDetails>();
 
   return (
