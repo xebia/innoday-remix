@@ -6,5 +6,5 @@ export function links() {
 }
 
 export const List: FC = ({children}) => {
-    return <ul>{children}</ul>
+    return <ul className="list">{children}</ul>
 }
