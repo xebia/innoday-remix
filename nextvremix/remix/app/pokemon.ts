@@ -15,10 +15,11 @@ export interface PokemonResult {
   url: string;
 }
 
-export const getPokemons = async (): Promise<PokemonsResponse> => {
+export const getPokemons = async (limit = 10, offset = 0): Promise<PokemonsResponse> => {
+  console.log("getPokemons called with", limit, offset)
   try {
     const response = await fetch(
-      "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0"
+      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
     );
 
     return await response.json() as Promise<PokemonsResponse>;
