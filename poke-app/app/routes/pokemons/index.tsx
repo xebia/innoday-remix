@@ -12,10 +12,10 @@ export default function Index() {
 
   return (
     <div className="bg-gray-200 h-full">
-      <h1>Pokemons</h1>
-      <div className="grid grid-cols-3 p-10">
+      <h1 className="text-5xl font-bold">Pokémons</h1>
+      <div className="grid grid-cols-3 p-10 gap-10">
         {pokemons.map((pokemon) => (
-          <div key={pokemon.name} className="bg-white p-4 rounded-lg m-2 ">
+          <div key={pokemon.name} className="bg-white p-4 rounded-lg">
             <img src={pokemon.sprites.front_default} />
             <div className="block">{pokemon.name}</div>
             <Link className="block poke-button" to={`/pokemons/${pokemon.id}`}>
