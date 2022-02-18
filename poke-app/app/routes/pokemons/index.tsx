@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "remix";
 import { getAllPokemons } from "~/api/pokemons";
-import { PokemonApi, PokemonDetails } from "~/types";
+import { PokemonDetails } from "~/types";
 
 export const loader = async () => {
   const response = await getAllPokemons();
